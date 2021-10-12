@@ -1,0 +1,1740 @@
+{
+	"info": {
+		"_postman_id": "b6ee7e1b-2c81-4df6-92a5-0e01cab990d4",
+		"name": "AdminMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Programs",
+			"item": [
+				{
+					"name": "Programs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/programs?isCxwfm=false",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"programs"
+							],
+							"query": [
+								{
+									"key": "isCxwfm",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Program Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/programs/{{agentProgramId}}",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"programs",
+								"{{agentProgramId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Programs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/programs",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"programs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Programs",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/programs",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"programs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Program",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/programs/11eb49bb-bd63-d300-96a9-0242ac110002",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"programs",
+								"11eb49bb-bd63-d300-96a9-0242ac110002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Programs Hard delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/programs/delete?programId=11ebfb4b-2cfc-dc20-ae69-0242ac110003",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"programs",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "programId",
+									"value": "11ebfb4b-2cfc-dc20-ae69-0242ac110003"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Program Templates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/programs/11eb0954-4d92-2ba0-b004-0242ac110002/templates",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"programs",
+								"11eb0954-4d92-2ba0-b004-0242ac110002",
+								"templates"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Management Units",
+			"item": [
+				{
+					"name": "Management Units",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/management-units",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"management-units"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "unmapped",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Management Units Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"agentProgramId\", pm.response.json().programID);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/management-units/{{agentMuId}}",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"management-units",
+								"{{agentMuId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Management Units",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/management-units",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"management-units"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Management Units",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"managementUnits\": [\r\n        {\r\n            \"muName\": \"PCS Support\",\r\n            \"timezone\": \"US/Pacific\",\r\n            \"programID\": \"11eb444f-215c-b100-88f6-0242ac110002\",\r\n            \"status\": null,\r\n            \"wfxID\": \"8a0010a972752c5c01727f1ed8c80007\",\r\n            \"wfmMuID\": 3,\r\n            \"createdBy\": null,\r\n            \"muID\": \"11eb404d-ce12-cc50-b849-0242ac110002\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/management-units",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"management-units"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Management Units",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"managementUnits\": [\r\n        {\r\n            \"muName\": \"TestMUName1\",\r\n            \"timezone\": \"Test/TimeZone\",\r\n            \"programID\": null,\r\n            \"status\": \"UNMAPPED\",\r\n            \"wfxID\": \"ITestWFXID1\",\r\n            \"wfmMuID\": 1235,\r\n            \"createdBy\": \"CREATED_FOR_TESTING\",\r\n            \"agentsCount\": null,\r\n            \"muID\": \"11eb2379-2834-8e40-ae4a-549c4234cd06\"\r\n        },\r\n        {\r\n            \"muName\": \"TestMUName2\",\r\n            \"timezone\": \"Test/TimeZone\",\r\n            \"programID\": null,\r\n            \"status\": \"UNMAPPED\",\r\n            \"wfxID\": \"ITestWFXID2\",\r\n            \"wfmMuID\": 1236,\r\n            \"createdBy\": \"CREATED_FOR_TESTING\",\r\n            \"agentsCount\": null,\r\n            \"muID\": \"11eb2379-2846-6890-ae4a-549c4234cd06\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/management-units",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"management-units"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Management Units Hard delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/management-units/delete",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"management-units",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contact-Types",
+			"item": [
+				{
+					"name": "Contact Types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/contact-types",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"contact-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contact Types",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/contact-types",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"contact-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contact Types",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/contact-types",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"contact-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contact Types",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/contact-types",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"contact-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contact Types Hard delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/contact-types",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"contact-types"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ADGs",
+			"item": [
+				{
+					"name": "ADGs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/adgs",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"adgs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADGs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/adgs",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"adgs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADGs",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/adgs",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"adgs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADGs",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/adgs",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"adgs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADGs Hard delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/adgs/delete",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"adgs",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Activity-Codes",
+			"item": [
+				{
+					"name": "Activity-Codes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/activity-codes",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"activity-codes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activity-Codes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/activity-codes",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"activity-codes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activity-Codes",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/activity-codes",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"activity-codes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activity-Codes",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/activity-codes",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"activity-codes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activity-Codes Hard delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"activities\": [\r\n        {\r\n            \"activityId\": \"11eb0306-1c3c-19c0-a152-0242ac110002\",\r\n            \"wfxID\": \"NO_CODE\",\r\n            \"activityName\": \"No Code\",\r\n            \"createdBy\": \"CREATED_FOR_TESTING\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/activity-codes/delete",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"activity-codes",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sites",
+			"item": [
+				{
+					"name": "Sites",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/sites",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"sites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sites",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/sites",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"sites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sites",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"sites\": [\r\n    {\r\n      \"wfxSiteOID\": \"TEST_WFXSITEOID\",\r\n      \"wfxMuOID\": \"ITestWFXID\",\r\n      \"siteName\": \"Test_Site_Name\",\r\n      \"createdBy\": \"Integration_Testing\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/sites",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"sites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sites Hard delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"sites\": [\r\n    {\r\n      \"wfxSiteOID\": \"TEST_WFXSITEOID\",\r\n      \"wfxMuOID\": \"ITestWFXID\",\r\n      \"siteName\": \"Test_Site_Name\",\r\n      \"createdBy\": \"Integration_Testing\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/sites",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"sites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sites",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"sites\": [\r\n    {\r\n      \"wfxSiteOID\": \"TEST_WFXSITEOID\",\r\n      \"wfxMuOID\": \"ITestWFXID\",\r\n      \"siteName\": \"Test_Site_Name\",\r\n      \"createdBy\": \"Integration_Testing\",\r\n      \"muId\": \"11eb87b8-d7c5-0e40-ac6d-2016b956b2d7\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/sites",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"sites"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Configurations",
+			"item": [
+				{
+					"name": "Schedule Configurations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/schedule-config?siteId={{agentSiteId}}",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"schedule-config"
+							],
+							"query": [
+								{
+									"key": "siteId",
+									"value": "{{agentSiteId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hours of Operations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/ho-operations-config?programId={{agentProgramId}}",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"ho-operations-config"
+							],
+							"query": [
+								{
+									"key": "programId",
+									"value": "{{agentProgramId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trade Configurations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/trade-config?siteId={{agentSiteId}}&programId={{agentProgramId}}",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"trade-config"
+							],
+							"query": [
+								{
+									"key": "siteId",
+									"value": "{{agentSiteId}}"
+								},
+								{
+									"key": "programId",
+									"value": "{{agentProgramId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activity Configurations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/activity-config?programId=11eb5411-a261-aea0-9515-0242ac110002",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"activity-config"
+							],
+							"query": [
+								{
+									"key": "programId",
+									"value": "11eb5411-a261-aea0-9515-0242ac110002"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Skill",
+			"item": [
+				{
+					"name": "Skills",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/skills",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"skills"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Skills",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/skills",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"skills"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Templates",
+			"item": [
+				{
+					"name": "Templates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/templates",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Template",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/templates",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Template",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/programs/11eb87b8-ea3c-fdd0-ac6d-2016b956b2d7/template-assign",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"programs",
+								"11eb87b8-ea3c-fdd0-ac6d-2016b956b2d7",
+								"template-assign"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UnAssign Template",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}{{admin-ms}}/programs/11eb87b8-ea3c-fdd0-ac6d-2016b956b2d7/template-assign",
+							"host": [
+								"{{base-url}}{{admin-ms}}"
+							],
+							"path": [
+								"programs",
+								"11eb87b8-ea3c-fdd0-ac6d-2016b956b2d7",
+								"template-assign"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DIS Schedules",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJpbkNvbnRhY3QgRXZvbHZlQGluQ29udGFjdC5jb20iLCJzdWIiOiJzZXJ2aWNlOlBsYXRmb3JtLVVzZXItTWFuYWdlciIsImljQlVJZCI6MCwiZXhwIjoxNjIyODA5NTgzLCJpYXQiOjE2MjI4MDU5ODMsInRlbmFudCI6Indmb19tYXN0ZXIiLCJ2aWV3cyI6e30sImlzcyI6Imh0dHBzOi8vbmExLnRlc3QubmljZS1pbmNvbnRhY3QuY29tIiwibmFtZSI6InRlc3Qta2MtYWRtaW5AbmljZS5jb20ifQ.jLnGQsF8ffxD9j7Uam8lpPRpvwypHyO-oT_RIrJDFBCdt6_H9WCMmS81A3xMxIpi7Mwtbe4C04WGTDJkHS_--cK45sojPSEr9Wpz-CQDjxWY_S9Id9VC_YbAtTCcVMvpYNMC8cvLhZqHYZ7Cv1LoFeZYcxJjHF7JvIq8JO8pUts",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "orgIT_cygm38_EM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://na1.test.nice-incontact.com/eem-admin/v1/dis-schedules",
+							"protocol": "https",
+							"host": [
+								"na1",
+								"test",
+								"nice-incontact",
+								"com"
+							],
+							"path": [
+								"eem-admin",
+								"v1",
+								"dis-schedules"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DIS OnDemand Job Import",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{bearer-token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tenantId\": \"{{tenantId}}\",\r\n    \"jobName\": \"cxwfm-su_test\",\r\n    \"jobQueue\": \"dev-eem-batch-job-queue-us-west-2\",\r\n    \"jobDefinition\": \"dev-eem-batch-task-iex-mu\",\r\n    \"forTroubleshooting\": \"true\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base-url}}{{admin-ms}}/dis",
+					"host": [
+						"{{base-url}}{{admin-ms}}"
+					],
+					"path": [
+						"dis"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

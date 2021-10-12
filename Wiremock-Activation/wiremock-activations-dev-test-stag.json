@@ -1,0 +1,79 @@
+{
+	"mappings": [
+		{
+			"request": {
+				"urlPath": "/activationKey",
+				"method": "GET",
+				"headers": {
+					"App-Version": {
+						"contains": "1.0"
+					}
+				},
+				"queryParameters": {
+					"extraParameter": {
+						"equalTo": "2e6d76ead9c6814c"
+					},
+					"hashValue": {
+						"equalTo": "CXEMSTAG",
+						"caseInsensitive": true
+					}
+				}
+			},
+			"response": {
+				"status": 200,
+				"body": "[{\"URL\": \"http://na1.staging.localhost:8088/\",\"StagingURL\": \"https://na1.staging.nice-incontact.com/\",\"CustomerName\": \"CXONE EM DEV\",\"GoogleAnalyticsID\": \"false\",\"appconfig\": {},\"AndroidVersion\": \"\",\"iPhoneVersion\": \"\"}]"
+			},
+			"priority": 1
+		},
+		{
+			"request": {
+				"urlPath": "/activationKey",
+				"method": "GET",
+				"headers": {
+					"App-Version": {
+						"contains": "1.0"
+					}
+				},
+				"queryParameters": {
+					"extraParameter": {
+						"equalTo": "2e6d76ead9c6814c"
+					},
+					"hashValue": {
+						"equalTo": "CXEMTEST",
+						"caseInsensitive": true
+					}
+				}
+			},
+			"response": {
+				"status": 200,
+				"body": "[{\"URL\": \"http://na1.test.localhost:8088/\",\"StagingURL\": \"https://na1.test.nice-incontact.com/\",\"CustomerName\": \"CXONE EM QA\",\"GoogleAnalyticsID\": \"false\",\"appconfig\": {},\"AndroidVersion\": \"\",\"iPhoneVersion\": \"\"}]"
+			},
+			"priority": 1
+		},
+		{
+			"request": {
+				"urlPath": "/activationKey",
+				"method": "GET",
+				"headers": {
+					"App-Version": {
+						"contains": "1.0"
+					}
+				},
+				"queryParameters": {
+					"extraParameter": {
+						"equalTo": "2e6d76ead9c6814c"
+					},
+					"hashValue": {
+						"equalTo": "CXEEM12345",
+						"caseInsensitive": true
+					}
+				}
+			},
+			"response": {
+				"status": 200,
+				"body": "[{\"URL\": \"http://na1.dev.localhost:8088/\",\"StagingURL\": \"https://na1.dev.nice-incontact.com/\",\"CustomerName\": \"CXONE EM DEV\",\"GoogleAnalyticsID\": \"false\",\"appconfig\": {},\"AndroidVersion\": \"\",\"iPhoneVersion\": \"\"}]"
+			},
+			"priority": 1
+		}
+	]
+}

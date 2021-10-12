@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "050c5773-701c-48b2-a7f5-4418954e1034",
+		"name": "Wiremock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all Wiremock Mappings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{wiremock-base-url}}/__admin/mappings",
+					"host": [
+						"{{wiremock-base-url}}"
+					],
+					"path": [
+						"__admin",
+						"mappings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Mapping",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"request\": {\r\n        \"urlPath\": \"/activationKey\",\r\n        \"method\": \"GET\",\r\n        \"headers\": {\r\n            \"App-Version\": {\r\n                \"contains\": \"1.0\"\r\n            }\r\n        },\r\n        \"queryParameters\": {\r\n            \"extraParameter\": {\r\n                \"equalTo\": \"2e6d76ead9c6814c\"\r\n            },\r\n            \"hashValue\": {\r\n                \"equalTo\": \"CXEMTEST\",\r\n                \"caseInsensitive\": true\r\n            }\r\n        }\r\n    },\r\n    \"response\": {\r\n        \"status\": 200,\r\n        \"body\": \"[{\\\"URL\\\": \\\"http://na1.test.localhost:8088/\\\",\\\"StagingURL\\\": \\\"https://na1.test.nice-incontact.com/\\\",\\\"CustomerName\\\": \\\"CXONE EM QA\\\",\\\"GoogleAnalyticsID\\\": \\\"false\\\",\\\"appconfig\\\": {},\\\"AndroidVersion\\\": \\\"\\\",\\\"iPhoneVersion\\\": \\\"\\\"}]\"\r\n    },\r\n    \"priority\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{wiremock-base-url}}/__admin/mappings",
+					"host": [
+						"{{wiremock-base-url}}"
+					],
+					"path": [
+						"__admin",
+						"mappings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Mappings",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://devlab.wfmgateway.com/eemcxwiremock/__admin/mappings/save",
+					"protocol": "http",
+					"host": [
+						"devlab",
+						"wfmgateway",
+						"com"
+					],
+					"path": [
+						"eemcxwiremock",
+						"__admin",
+						"mappings",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Options Request",
+			"request": {
+				"method": "OPTIONS",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://devlab.wfmgateway.com/eemcxwiremock/admin/getScheduleConfig",
+					"protocol": "http",
+					"host": [
+						"devlab",
+						"wfmgateway",
+						"com"
+					],
+					"path": [
+						"eemcxwiremock",
+						"admin",
+						"getScheduleConfig"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Wiremock Mapping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "tenantId",
+						"value": "11e72a4d-c24c-f040-aac3-0242ac110003",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://devlab.wfmgateway.com/eemcxwiremock/wfm-integration/v1/config/tenant",
+					"protocol": "http",
+					"host": [
+						"devlab",
+						"wfmgateway",
+						"com"
+					],
+					"path": [
+						"eemcxwiremock",
+						"wfm-integration",
+						"v1",
+						"config",
+						"tenant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Mapping By Id (USE BY CAUTION - DO NOT REMOVE ID)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"request\": {\r\n        \"urlPattern\": \"/wfm-integration/v1/config/tenant\",\r\n        \"method\": \"GET\",\r\n        \"headers\": {\r\n            \"tenantId\": {\r\n                \"equalTo\": \"11eb15bb-e3fd-5470-86f2-0242ac110004\",\r\n                \"caseInsensitive\": true\r\n            }\r\n        }\r\n    },\r\n    \"response\": {\r\n        \"status\": 200,\r\n        \"body\": \"{\\\"id\\\": 1,\\\"name\\\": \\\"IEX 7.2\\\",\\\"kms_key_identifier\\\": \\\"arn:aws:kms:us-west-2:934137132601:key/18decd34-203e-447c-943c-c610cf109739\\\",\\\"iex_smartsync_host\\\": \\\"http://eemcxwfm.wfmgateway.com\\\",\\\"ascws_host\\\": \\\"http://ascws.example.com/\\\",\\\"ascws_client_id\\\":\\\"ascws_user\\\",\\\"ascws_client_password\\\": \\\"string\\\",\\\"sftp_host\\\": \\\"http://sftp.example.com/\\\",\\\"sftp_username\\\": \\\"sftp_user\\\",\\\"sftp_password\\\": \\\"string\\\",\\\"iex_tenant_id\\\": 1,\\\"iex_tenant_name\\\": \\\"Customer 1\\\",\\\"interval_bucket_path\\\": \\\"string\\\",\\\"iex_username\\\": \\\"master\\\",\\\"iex_encrypted_password\\\":\\\"AQICAHibp1E1MSq3erwrslsrqBMFxdNWJx9NIQVRR4Byvilm4wHOrQTTkSyucq4q9yOG6h9xAAAAZjBkBgkqhkiG9w0BBwagVzBVAgEAMFAGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMJou8zBO9qW5IzobzAgEQgCNBx3cxWWSUZUMZ4doHfNQBAiG+A8C2g2cIck0L0nPwgb11Ww==\\\"}\",\r\n        \"headers\": {\r\n            \"Content-Type\": \"application/json\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://devlab.wfmgateway.com/eemcxwiremock/__admin/mappings/ce651cff-f852-4ef0-a845-2f5450611dbb",
+					"protocol": "http",
+					"host": [
+						"devlab",
+						"wfmgateway",
+						"com"
+					],
+					"path": [
+						"eemcxwiremock",
+						"__admin",
+						"mappings",
+						"ce651cff-f852-4ef0-a845-2f5450611dbb"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

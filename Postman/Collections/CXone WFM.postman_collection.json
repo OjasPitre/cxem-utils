@@ -1,0 +1,1141 @@
+{
+	"info": {
+		"_postman_id": "e498f7df-102a-45a5-bc61-b3fa63c953b3",
+		"name": "CXone WFM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Schedules",
+			"item": [
+				{
+					"name": "Schedules of Agent",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/schedules/user/{{userHubId}}?start=2020-09-05T21:00:00%2B00:00&end=2020-09-06T20:59:59%2B00:00",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"schedules",
+								"user",
+								"{{userHubId}}"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2020-09-05T21:00:00%2B00:00"
+								},
+								{
+									"key": "end",
+									"value": "2020-09-06T20:59:59%2B00:00"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Schedules of SU [WIP]",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/schedules/published/schedule-units/11eba9cc-1127-dde0-bcc0-0242ac110002?start=2021-05-29T06:00:00.000Z&end=2021-06-05T05:59:59.999Z",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"schedules",
+								"published",
+								"schedule-units",
+								"11eba9cc-1127-dde0-bcc0-0242ac110002"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2021-05-29T06:00:00.000Z"
+								},
+								{
+									"key": "end",
+									"value": "2021-06-05T05:59:59.999Z"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Weekly Rules",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/schedules/weekly-rule",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"schedules",
+								"weekly-rule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Schedules",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://na1.dev.nice-incontact.com/schedules/saveandpublish",
+							"protocol": "https",
+							"host": [
+								"na1",
+								"dev",
+								"nice-incontact",
+								"com"
+							],
+							"path": [
+								"schedules",
+								"saveandpublish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish Schedule",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"publishElements\": [\r\n        {\r\n            \"employeeGroupId\": \"{{assignedSU}}\",\r\n            \"start\": \"2021-09-08T18:29:59.999Z\",\r\n            \"end\": \"2021-10-08T18:30:00.000Z\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/schedules/publish",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"schedules",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Schedules",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://na1.dev.nice-incontact.com/schedules/saveandpublish",
+							"protocol": "https",
+							"host": [
+								"na1",
+								"dev",
+								"nice-incontact",
+								"com"
+							],
+							"path": [
+								"schedules",
+								"saveandpublish"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Entities",
+			"item": [
+				{
+					"name": "Activity Codes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/activity-codes",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"activity-codes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activity Codes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/activity-codes",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"activity-codes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Scheduling Units",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/user/groups",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"user",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Skills",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/wfo/user/skills",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"wfo",
+								"user",
+								"skills"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "groups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/user/groups",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"user",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Scheduling Units",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/user/groups",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"user",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agent Skills",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/wfo/user/skills/all/users",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"wfo",
+								"user",
+								"skills",
+								"all",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activity Codes",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/activity-codes",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"activity-codes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Scheduling Units",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/user/groups?groupId=11ebb17a-a070-41d0-b1d9-0242ac110003",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"user",
+								"groups"
+							],
+							"query": [
+								{
+									"key": "groupId",
+									"value": "11ebb17a-a070-41d0-b1d9-0242ac110003"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Skills",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"\",\r\n    \"name\": \"test12\",\r\n    \"acdSkillInfos\": [],\r\n    \"channelId\": \"11e76c92-0f5e-6906-a7f1-0021ccc2f98f\",\r\n    \"colorCode\": \"#adadad\",\r\n    \"deltaAdded\": [\r\n        \"11eba9ce-48e2-4e80-bcc0-0242ac110002\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/wfo/user/skills",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"wfo",
+								"user",
+								"skills"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Scheduling Units",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"11ebb192-ba97-bc60-8623-0242ac110002\",\r\n    \"name\": \"test10\",\r\n    \"timeZone\": \"America/Chicago\",\r\n    \"firstWeekDay\": \"MONDAY\",\r\n    \"deltaAdded\": [\r\n        {\r\n            \"id\": \"11eba9ce-48e2-4e80-bcc0-0242ac110002\",\r\n            \"userName\": \"amr.cxmqnrhmrk@wfosaas.com\",\r\n            \"firstName\": \"Billye\",\r\n            \"lastName\": \"Franecki\",\r\n            \"emailAddress\": \"amr.cxmqnrhmrk@wfosaas.com\",\r\n            \"customAttributes\": {\r\n                \"canBeRecordedScreen\": {\r\n                    \"id\": \"canBeRecordedScreen\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"false\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"virtualAgentEnabled\": {\r\n                    \"id\": \"virtualAgentEnabled\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"false\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"canBeRecorded\": {\r\n                    \"id\": \"canBeRecorded\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"false\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"canBeMeasured\": {\r\n                    \"id\": \"canBeMeasured\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"false\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"canViewBIReports\": {\r\n                    \"id\": \"canViewBIReports\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"false\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"virtualAgentType\": {\r\n                    \"id\": \"virtualAgentType\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"OFF\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"customerCard\": {\r\n                    \"id\": \"customerCard\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"false\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"canEditBIReports\": {\r\n                    \"id\": \"canEditBIReports\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"false\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"digitalEngagement\": {\r\n                    \"id\": \"digitalEngagement\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"false\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"canBeAnalyzed\": {\r\n                    \"id\": \"canBeAnalyzed\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"false\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"osLogin\": {\r\n                    \"id\": \"osLogin\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"canBeCoachedOrEvaluated\": {\r\n                    \"id\": \"canBeCoachedOrEvaluated\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"true\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"skill\": {\r\n                    \"id\": \"skill\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"11eba9cd-c761-8920-9275-0242ac110003\",\r\n                            \"resolvedValue\": null\r\n                        },\r\n                        {\r\n                            \"value\": \"11eba9ce-0209-4090-b59b-0242ac110005\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                },\r\n                \"canBeScheduled\": {\r\n                    \"id\": \"canBeScheduled\",\r\n                    \"values\": [\r\n                        {\r\n                            \"value\": \"true\",\r\n                            \"resolvedValue\": null\r\n                        }\r\n                    ]\r\n                }\r\n            },\r\n            \"organizationName\": null,\r\n            \"mobileNumber\": null,\r\n            \"assignedGroup\": \"11eba9cc-1127-dde0-bcc0-0242ac110002\",\r\n            \"rank\": 1,\r\n            \"country\": null,\r\n            \"timeZone\": \"America/Chicago\",\r\n            \"role\": \"Agent\",\r\n            \"roleUUID\": \"11eba9cc-11eb-54f0-abd7-0242ac110003\",\r\n            \"hireDate\": \"2021-04-29T18:30:00.000Z\",\r\n            \"status\": \"ACTIVE\",\r\n            \"invitationExpired\": true,\r\n            \"acdUserMappings\": null,\r\n            \"acdInfos\": [\r\n                {\r\n                    \"loginId\": \"amr.cxmqnrhmrk@wfosaas.com\"\r\n                }\r\n            ],\r\n            \"groupIds\": [],\r\n            \"deletedDate\": null,\r\n            \"icBUId\": null,\r\n            \"icClusterId\": null,\r\n            \"impersonated\": false,\r\n            \"applicationAttributes\": null,\r\n            \"billable\": true,\r\n            \"modifiable\": true,\r\n            \"idmType\": null,\r\n            \"passwordPolicyUpdated\": false,\r\n            \"teamId\": \"10e59aca-a9cc-11eb-9ad7-023113831ff2\",\r\n            \"update\": false,\r\n            \"defaultAdminUserRequired\": true,\r\n            \"externalIdentity\": null,\r\n            \"creationDate\": null,\r\n            \"emailToBeVerified\": null,\r\n            \"secondaryRoleIds\": [],\r\n            \"views\": [],\r\n            \"loginAuthenticatorId\": \"10e4fa6f-a9cc-11eb-9ad7-023113831ff2\",\r\n            \"skills\": [\r\n                \"11eba9cd-c761-8920-9275-0242ac110003\",\r\n                \"11eba9ce-0209-4090-b59b-0242ac110005\"\r\n            ],\r\n            \"availability\": null,\r\n            \"shiftPreferences\": null,\r\n            \"dayOffUnitPreferences\": null,\r\n            \"password\": null,\r\n            \"fullName\": \"Billye Franecki\",\r\n            \"initials\": \"BF\"\r\n        }\r\n    ],\r\n    \"deltaDeleted\": [],\r\n    \"workingHours\": [\r\n        {\r\n            \"day\": \"MONDAY\",\r\n            \"durationInMinutes\": 1440,\r\n            \"fromHour\": \"12:00 AM\"\r\n        },\r\n        {\r\n            \"day\": \"TUESDAY\",\r\n            \"durationInMinutes\": 1440,\r\n            \"fromHour\": \"12:00 AM\"\r\n        },\r\n        {\r\n            \"day\": \"WEDNESDAY\",\r\n            \"durationInMinutes\": 1440,\r\n            \"fromHour\": \"12:00 AM\"\r\n        },\r\n        {\r\n            \"day\": \"THURSDAY\",\r\n            \"durationInMinutes\": 1440,\r\n            \"fromHour\": \"12:00 AM\"\r\n        },\r\n        {\r\n            \"day\": \"FRIDAY\",\r\n            \"durationInMinutes\": 1440,\r\n            \"fromHour\": \"12:00 AM\"\r\n        },\r\n        {\r\n            \"day\": \"SATURDAY\",\r\n            \"durationInMinutes\": 1440,\r\n            \"fromHour\": \"12:00 AM\"\r\n        },\r\n        {\r\n            \"day\": \"SUNDAY\",\r\n            \"durationInMinutes\": 1440,\r\n            \"fromHour\": \"12:00 AM\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/user/groups",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"user",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activity Codes categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/activity-code-categories",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"activity-code-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Search",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/user-management/v1/users/search",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"user-management",
+								"v1",
+								"users",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assigned Agents(getAssignedUsers)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/user/groups/getAssignedUsers",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"user",
+								"groups",
+								"getAssignedUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Skills",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/wfo/user/skills?id=11ebb180-8bf2-fda0-a0c9-0242ac110005",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"wfo",
+								"user",
+								"skills"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "11ebb180-8bf2-fda0-a0c9-0242ac110005"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TimeOff",
+			"item": [
+				{
+					"name": "Timeoff Balances",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/timeoff-manager/balance/user/{{userHubId}}",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"timeoff-manager",
+								"balance",
+								"user",
+								"{{userHubId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimeOff Activities",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/activity-codes",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"activity-codes"
+							]
+						},
+						"description": "## Timeoff activities are activities with activityCodeCategory having title: 'Out of Office'.\n## Full day or Partial day is denoted by \"allowFullDayRequest: true\" under additionalConfiguration"
+					},
+					"response": []
+				},
+				{
+					"name": "Submit TImeOff Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/schedule-requests",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"schedule-requests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Timeoff Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/schedule-requests/validate",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"schedule-requests",
+								"validate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Timeoff Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"requestUuid\": \"11ebf504-ffb3-f470-8b66-0242ac110004\",\r\n    \"userUuid\": \"11ebd7fd-289a-bf60-bac1-0242ac110002\",\r\n    \"userName\": \"nikitaCxONe WFM\",\r\n    \"creationTime\": \"2021-08-04T09:18:58.283Z\",\r\n    \"startTime\": \"2021-08-03T18:30:00.000Z\",\r\n    \"endTime\": \"2021-08-04T18:29:59.000Z\",\r\n    \"requestedChanges\": {\r\n        \"isFullDayActivity\": true,\r\n        \"isValidAfterScheduleChanges\": true,\r\n        \"numberOfDays\": 1,\r\n        \"timeZoneId\": \"Asia/Calcutta\",\r\n        \"startDate\": \"2021-08-04\",\r\n        \"activityChanges\": [],\r\n        \"canceledActivityChanges\": [\r\n            {\r\n                \"activityCodeId\": \"24dbf594-8a34-1100-0000-000000000000\",\r\n                \"activityCodeName\": \"Paid Time Off\",\r\n                \"userComment\": \"test pto\",\r\n                \"startTime\": \"2021-08-04T00:00:00.000Z\",\r\n                \"endTime\": \"2021-08-04T00:00:00.000Z\",\r\n                \"originalStartTime\": null,\r\n                \"originalEndTime\": null,\r\n                \"changeType\": \"New\"\r\n            }\r\n        ]\r\n    },\r\n    \"requestedScheduleData\": {\r\n        \"userUuid\": \"11ebd7fd-289a-bf60-bac1-0242ac110002\",\r\n        \"shifts\": [],\r\n        \"activityIntervals\": [\r\n            {\r\n                \"id\": null,\r\n                \"activityNotes\": null,\r\n                \"activityCode\": {\r\n                    \"id\": \"24dbf594-8a34-1100-0000-000000000000\",\r\n                    \"title\": \"Paid Time Off\",\r\n                    \"priority\": 3,\r\n                    \"open\": false,\r\n                    \"work\": true,\r\n                    \"overTime\": false,\r\n                    \"defaultBaseCodeFlag\": false,\r\n                    \"baseCodeFlag\": false,\r\n                    \"deleteFlag\": false,\r\n                    \"defaultLength\": 15,\r\n                    \"createdBy\": \"User\",\r\n                    \"lastModified\": \"2020-10-15T18:48:58.000Z\",\r\n                    \"activityCodeCategory\": {\r\n                        \"id\": \"24d548da-8a34-1100-0000-000000000000\",\r\n                        \"title\": \"Out of Office\",\r\n                        \"color\": \"#9A5D9A\",\r\n                        \"createdBy\": \"User\",\r\n                        \"lastModified\": \"2020-04-29T16:11:54.000Z\"\r\n                    },\r\n                    \"silenceFlag\": false,\r\n                    \"additionalConfiguration\": {\r\n                        \"agentRequestsConfiguration\": {\r\n                            \"allowPartialDayRequest\": true,\r\n                            \"partialDayRequestMinHours\": 0.08333333333333333,\r\n                            \"partialDayRequestMaxHours\": 8,\r\n                            \"allowFullDayRequest\": true,\r\n                            \"allowAgentChangesAdd\": false,\r\n                            \"allowAgentChangesDelete\": false,\r\n                            \"allowAgentChangesEdit\": false\r\n                        }\r\n                    },\r\n                    \"acdEventMappingList\": [],\r\n                    \"payrollCodes\": []\r\n                },\r\n                \"priority\": 0,\r\n                \"activityIntervalAttributes\": {\r\n                    \"forceShowOnAgentSchedule\": true,\r\n                    \"editable\": true,\r\n                    \"removable\": true,\r\n                    \"copyable\": true,\r\n                    \"canBeOverwritten\": false\r\n                },\r\n                \"lastModifiedTime\": null,\r\n                \"start\": \"2021-08-04T05:00:00.000Z\",\r\n                \"end\": \"2021-08-05T05:00:00.000Z\"\r\n            }\r\n        ]\r\n    },\r\n    \"originalScheduleData\": {\r\n        \"userUuid\": \"11ebd7fd-289a-bf60-bac1-0242ac110002\",\r\n        \"shifts\": [],\r\n        \"activityIntervals\": []\r\n    },\r\n    \"status\": \"CANCELED\",\r\n    \"statusUpdaterUuid\": null,\r\n    \"statusUpdaterName\": null,\r\n    \"statusUpdateComment\": null,\r\n    \"revision\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/schedule-requests",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"schedule-requests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Timeoff Requests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/schedule-requests/?scope=mine",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"schedule-requests",
+								""
+							],
+							"query": [
+								{
+									"key": "scope",
+									"value": "mine"
+								},
+								{
+									"key": "filter",
+									"value": "(status eq 'PENDING')",
+									"disabled": true
+								},
+								{
+									"key": "includeScheduleData",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "schedulingUnits",
+									"value": "{{assignedSU}}",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "(status eq 'PENDING') or ((status eq 'APPROVED' or status eq 'DECLINED' or status eq 'DISCARDED' or status eq 'CANCELED' or status eq 'AUTO_APPROVED' or status eq 'AUTO_DECLINED') and creationDate ge 90d)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Timeoff Rule",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/timeoff-manager/allotments/rules",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"timeoff-manager",
+								"allotments",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Timeoff Rule",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/timeoff-manager/allotments/rules?ruleId=11ec058f-8377-51e0-9406-0242ac110006",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"timeoff-manager",
+								"allotments",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "ruleId",
+									"value": "11ec058f-8377-51e0-9406-0242ac110006"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"bearer-token\", pm.response.json().token)\r",
+							"\r",
+							"pm.environment.set(\"authCode\", pm.response.json().authCode)\r",
+							"\r",
+							"pm.environment.set(\"refresh-token\", pm.response.json().refreshToken)\r",
+							"\r",
+							"pm.environment.set(\"tenantId\", pm.response.json().tenantId)\r",
+							"\r",
+							"pm.environment.set(\"tenantName\", pm.response.json().user.organizationName)\r",
+							"\r",
+							"pm.environment.set(\"userHubId\", pm.response.json().user.id)\r",
+							"\r",
+							"pm.environment.set(\"assignedSU\", pm.response.json().user.assignedGroup)\r",
+							"console.log(pm.environment.name)\r",
+							"// const moment = require('moment');\r",
+							"// const currentdate = moment().format((\"YYYY-MM-DD\"));\r",
+							"// const nextweek = moment().add(5, 'days').format(\"YYYY-MM-DD\");\r",
+							"// pm.environment.set('currentdate', currentdate);\r",
+							"// pm.environment.set('enddate', nextweek);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{login-url}}",
+					"host": [
+						"{{login-url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Roles & Permissions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/authorization/v1/role/permissions",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"authorization",
+						"v1",
+						"role",
+						"permissions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

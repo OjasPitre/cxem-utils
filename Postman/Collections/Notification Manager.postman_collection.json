@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "a837729d-3e0c-4663-84c3-8f7fa4655007",
+		"name": "Notification Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Push Notification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					},
+					{
+						"key": "tenant",
+						"value": "{{tenantName}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"Hello\",\r\n    \"userHubIdentifier\": \"11e72a4d-c481-3560-aac3-0242ac110003\",\r\n    \"attributes\": {\r\n        \"messageTitle\": \"Schedule-Change\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}{{notification-ms}}/notify",
+					"host": [
+						"{{base-url}}{{notification-ms}}"
+					],
+					"path": [
+						"notify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Batch Push Notification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{bearer-token}}"
+					},
+					{
+						"key": "tenant",
+						"type": "text",
+						"value": "{{tenantName}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"notifyRequests\": [\r\n        {\r\n            \"message\": \"Hello\",\r\n            \"userHubIdentifier\": \"11e72a4d-c481-3560-aac3-0242ac110003\",\r\n            \"attributes\": {\r\n                \"messageTitle\": \"Schedule-Change\"\r\n            }\r\n        },\r\n         {\r\n            \"message\": \"Hello-Hi\",\r\n            \"userHubIdentifier\": \"11e72a4d-c481-3560-aac3-0242ac110003\",\r\n            \"attributes\": {\r\n                \"messageTitle\": \"Schedule-Change\"\r\n            }\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}{{notification-ms}}/notify-all",
+					"host": [
+						"{{base-url}}{{notification-ms}}"
+					],
+					"path": [
+						"notify-all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Device for Notification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					},
+					{
+						"key": "tenant",
+						"value": "{{tenantName}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userHubIdentifier\": \"11e72a4d-c481-3560-aac3-0242ac110003\",\r\n    \"deviceType\": \"M/android\",\r\n    \"deviceToken\": \"ezPLkEYyBLo:APA91bFTEaoNfWj8I5nHdAInAtuj6dh0UVU1_5bS49UL4wmddcMTIhWZLnGYDVXGbLogzVFyTw3oEcGIaux7xrrkg2QO-dU0EB3HlKylj-dzP2fggitigAs5dWNz-sReu561qy_bSfNy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}{{notification-ms}}/register/device",
+					"host": [
+						"{{base-url}}{{notification-ms}}"
+					],
+					"path": [
+						"register",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Email Notification",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}

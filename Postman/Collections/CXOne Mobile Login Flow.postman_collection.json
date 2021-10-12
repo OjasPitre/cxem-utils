@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "d609b7f0-2510-464c-86af-0fb3f10b79c8",
+		"name": "CXOne Mobile Login Flow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Mobile Activation Code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"base-url\", pm.response.json()[0].URL);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "App-Version",
+						"value": "1.0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{activation-key-api}}?extraParameter=2e6d76ead9c6814c&hashValue={{activationKey}}",
+					"host": [
+						"{{activation-key-api}}"
+					],
+					"query": [
+						{
+							"key": "extraParameter",
+							"value": "2e6d76ead9c6814c"
+						},
+						{
+							"key": "hashValue",
+							"value": "{{activationKey}}",
+							"description": "Dev / Test Env"
+						},
+						{
+							"key": "hashValue",
+							"value": "CXEMNA1",
+							"description": "Prod Env 1",
+							"disabled": true
+						},
+						{
+							"key": "hashValue",
+							"value": "CXEMAU1",
+							"description": "Prod Env 2",
+							"disabled": true
+						},
+						{
+							"key": "hashValue",
+							"value": "CXEMEU1",
+							"description": "Prod Env 3",
+							"disabled": true
+						},
+						{
+							"key": "hashValue",
+							"value": "CXEMCA1",
+							"description": "Prod Env 5",
+							"disabled": true
+						},
+						{
+							"key": "hashValue",
+							"value": "CXEMNA2",
+							"description": "Prod Env 6",
+							"disabled": true
+						},
+						{
+							"key": "hashValue",
+							"value": "EEM22222",
+							"disabled": true
+						},
+						{
+							"key": "hashValue",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PreLogin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\": \"wfme2e-admin@nice.com\"\n}"
+				},
+				"url": {
+					"raw": "{{pre-login-url}}",
+					"host": [
+						"{{pre-login-url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"bearer-token\", pm.response.json().token)\r",
+							"\r",
+							"pm.environment.set(\"authCode\", pm.response.json().authCode)\r",
+							"\r",
+							"pm.environment.set(\"refresh-token\", pm.response.json().refreshToken)\r",
+							"\r",
+							"pm.environment.set(\"tenantId\", pm.response.json().tenantId)\r",
+							"\r",
+							"pm.environment.set(\"tenantName\", pm.response.json().user.organizationName)\r",
+							"\r",
+							"pm.environment.set(\"userHubId\", pm.response.json().user.id)\r",
+							"\r",
+							"// const moment = require('moment');\r",
+							"// const currentdate = moment().format((\"YYYY-MM-DD\"));\r",
+							"// const nextweek = moment().add(5, 'days').format(\"YYYY-MM-DD\");\r",
+							"// pm.environment.set('currentdate', currentdate);\r",
+							"// pm.environment.set('enddate', nextweek);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"withganesh123@gmail.com\",\r\n    \"password\": \"Password12\"\r\n}"
+				},
+				"url": {
+					"raw": "{{login-url}}",
+					"host": [
+						"{{login-url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token EEM",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "authCode",
+						"value": "{{authCode}}"
+					}
+				],
+				"url": {
+					"raw": "{{token-url}}",
+					"host": [
+						"{{token-url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activation Key Mock",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "App-Version",
+						"value": "1.0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://devlab.wfmgateway.com/eemcxwiremock/activationKey?extraParameter=2e6d76ead9c6814c&hashValue={{activationKey}}",
+					"protocol": "http",
+					"host": [
+						"devlab",
+						"wfmgateway",
+						"com"
+					],
+					"path": [
+						"eemcxwiremock",
+						"activationKey"
+					],
+					"query": [
+						{
+							"key": "extraParameter",
+							"value": "2e6d76ead9c6814c"
+						},
+						{
+							"key": "hashValue",
+							"value": "{{activationKey}}",
+							"description": "Dev / Test Env"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

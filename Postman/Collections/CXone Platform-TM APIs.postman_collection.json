@@ -1,0 +1,760 @@
+{
+	"info": {
+		"_postman_id": "b6b3c68f-12dd-4638-b49a-356d8f7d30da",
+		"name": "CXone Platform/TM APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login TM",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"bearer-token\", pm.response.json().token)\r",
+							"\r",
+							"pm.environment.set(\"authCode\", pm.response.json().authCode)\r",
+							"\r",
+							"pm.environment.set(\"refresh-token\", pm.response.json().refreshToken)\r",
+							"\r",
+							"pm.environment.set(\"tenantId\", pm.response.json().tenantId)\r",
+							"\r",
+							"pm.environment.set(\"tenantName\", pm.response.json().user.organizationName)\r",
+							"\r",
+							"pm.environment.set(\"userHubId\", pm.response.json().user.id)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{loginAdmin}}"
+				},
+				"url": {
+					"raw": "{{login-url}}",
+					"host": [
+						"{{login-url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tenant Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJpbkNvbnRhY3QgRXZvbHZlQGluQ29udGFjdC5jb20iLCJzdWIiOiJzZXJ2aWNlOlBsYXRmb3JtLVVzZXItTWFuYWdlciIsImljQlVJZCI6MCwiZXhwIjoxNjE3OTQzODQ1LCJpYXQiOjE2MTc5NDAyNDUsInRlbmFudCI6Indmb19tYXN0ZXIiLCJ2aWV3cyI6e30sImlzcyI6Imh0dHBzOi8vbmExLmRldi5uaWNlLWluY29udGFjdC5jb20iLCJuYW1lIjoiZGV2LWtjLWFkbWluQG5pY2UuY29tIn0.fOfR8WCPECAc-wF23exQG3LZcVJPZyRMvElie5fV61AoPFJE2cWRQ732MICppBnjEwEylbbfkTx7OneIxl75Jp9NJ07WAkk4sis5Bj3CATqXJWbsDMKdc2sWQzJ0gyZJqZisQuKKrhDWw7UtRMTEP1Lq-gXKC0wxrSBk-ANrYFk",
+						"type": "text"
+					},
+					{
+						"key": "tenant",
+						"value": "{{tenantName}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/tenants/id/11eb3f06-89c2-c9d0-86d2-0242ac110002",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"tenants",
+						"id",
+						"11eb3f06-89c2-c9d0-86d2-0242ac110002"
+					]
+				},
+				"description": "This API returns the details of the tenant whose ID is provided. It needs a service token."
+			},
+			"response": []
+		},
+		{
+			"name": "User Basic Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/user/search/11eb5beb-1511-eab0-905f-0242ac110004",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"user",
+						"search",
+						"11eb5beb-1511-eab0-905f-0242ac110004"
+					]
+				},
+				"description": "This API will get the basic details of all users which are passed as a list. This is deprecated, doesn't work."
+			},
+			"response": []
+		},
+		{
+			"name": "User Details By Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "bearer {{bearer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/user/getById/{{userHubId}}",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"user",
+						"getById",
+						"{{userHubId}}"
+					]
+				},
+				"description": "This API will get all the details of a user (agent) from User Hub."
+			},
+			"response": []
+		},
+		{
+			"name": "Features Toggle On/Off",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{bearer-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{ftToToggle}}\",\r\n    \"toggled\": true,\r\n    \"tenant\": \"{{tenantName}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base-url}}/config/toggledFeatures/",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"config",
+						"toggledFeatures",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Current Tenant Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					},
+					{
+						"key": "tenant",
+						"value": "{{tenantName}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/tenants/current",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"tenants",
+						"current"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Features",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{bearer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/config/toggledFeatures",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"config",
+						"toggledFeatures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feature Toggle Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"ftToToggle\", pm.request.url.query.toObject().featureName);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{bearer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/config/toggledFeatures/featureStatus?featureName=release-navigation-redesign-CXCROSS-21",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"config",
+						"toggledFeatures",
+						"featureStatus"
+					],
+					"query": [
+						{
+							"key": "featureName",
+							"value": "release-cxone_em-trade_feature-CXEEM-1887",
+							"disabled": true
+						},
+						{
+							"key": "featureName",
+							"value": "release-eem-programs-CXEEM-550",
+							"disabled": true
+						},
+						{
+							"key": "featureName",
+							"value": "release-cxone_em-request-timeoff_feature-CXEEM-4641",
+							"disabled": true
+						},
+						{
+							"key": "featureName",
+							"value": "release-navigation-redesign-CXCROSS-21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tenant Roles and Permissions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/tenants/current/privileges/categories-hierarchy",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"tenants",
+						"current",
+						"privileges",
+						"categories-hierarchy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tenant details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					},
+					{
+						"key": "tenant",
+						"value": "{{tenantName}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/tenants/current",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"tenants",
+						"current"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tenant details - Service Token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					},
+					{
+						"key": "tenant",
+						"value": "orgIT_tenant_em_tester1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/tenants/current",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"tenants",
+						"current"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Tenant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tenantName\": \"IT_sfsdf\",\r\n    \"brandingProfileId\": null,\r\n    \"timeZone\": \"Asia/Kolkata\",\r\n    \"status\": \"ACTIVE\",\r\n    \"customerType\": \"BASIC\",\r\n    \"billingId\": \"-1\",\r\n    \"clusterId\": \"-1\",\r\n    \"source\": \"postman\",\r\n    \"defaultAdminUserRequired\": false,\r\n    \"expirationDate\": \"2022-04-01T06:47:27.734Z\",\r\n    \"tenantType\": \"TRIAL\",\r\n    \"licenses\": [\r\n        {\r\n            \"applicationId\": \"EM\",\r\n            \"productId\": \"EVOLVE\",\r\n            \"featureIds\": [\r\n                172\r\n            ],\r\n            \"settings\": {}\r\n        },\r\n        {\r\n            \"applicationId\": \"QM\",\r\n            \"productId\": \"EVOLVE\",\r\n            \"featureIds\": [\r\n                103\r\n            ],\r\n            \"settings\": {\r\n                \"recordingType\": \"CXone\"\r\n            }\r\n        }\r\n    ],\r\n    \"billingCycle\": \"1\",\r\n    \"billingTelephoneNumber\": \"12323\",\r\n    \"userSoftLimit\": 500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/tenants/v2",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"tenants",
+						"v2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Tenant -default user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tenantName\": \"IT_502\",\r\n    \"brandingProfileId\": null,\r\n    \"timeZone\": \"Asia/Kolkata\",\r\n    \"status\": \"ACTIVE\",\r\n    \"customerType\": \"BASIC\",\r\n    \"billingId\": \"-1\",\r\n    \"clusterId\": \"-1\",\r\n    \"source\": \"postman\",\r\n    \"defaultAgentUserRequired\": true,\r\n    \"expirationDate\": \"2022-04-01T06:47:27.734Z\",\r\n    \"tenantType\": \"TRIAL\",\r\n    \"defaultUser\": {\r\n        \"firstName\": \"somefirst1\",\r\n        \"lastName\": \"somelast\",\r\n        \"email\": \"ptor.1617266197540@wfosaas.com\",\r\n        \"userName\": \"ptor.1617266197540@wfosaas.com\"\r\n    },\r\n    \"parameters\": {\r\n        \"UHA_password\": \"Password1\"\r\n    },\r\n    \"licenses\": [\r\n        {\r\n            \"applicationId\": \"QM\",\r\n            \"productId\": \"EVOLVE\",\r\n            \"featureIds\": [\r\n                103\r\n            ],\r\n            \"settings\": {\r\n                \"recordingType\": \"CXone\"\r\n            }\r\n        }\r\n    ],\r\n    \"billingCycle\": \"1\",\r\n    \"billingTelephoneNumber\": \"12323\",\r\n    \"userSoftLimit\": 500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/tenants",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"tenants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get License",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authCode",
+						"value": "{{authCode}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://na1.dev.nice-incontact.com/tenants/current",
+					"protocol": "https",
+					"host": [
+						"na1",
+						"dev",
+						"nice-incontact",
+						"com"
+					],
+					"path": [
+						"tenants",
+						"current"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Tenant",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"tenantId\": \"11eb9125-5443-d080-ae84-0242ac110002\",\r\n        \"tenantName\": \"tenant_sks\",\r\n        \"schemaName\": \"tenant_sks\",\r\n        \"parentId\": \"11e70887-e9a2-feb0-88e0-0242ac110004\",\r\n        \"partnerId\": \"11e70887-e9a2-feb0-88e0-0242ac110004\",\r\n        \"source\": \"tm-webapp\",\r\n        \"creationDate\": \"2021-03-30T06:58:30.036+00:00\",\r\n        \"expirationDate\": \"3000-01-01T00:00:00.000+00:00\",\r\n        \"timezone\": \"Asia/Kolkata\",\r\n        \"status\": \"ACTIVE\",\r\n        \"type\": \"CUSTOMER\",\r\n        \"customerType\": \"BASIC\",\r\n        \"clusterId\": \"-1\",\r\n        \"billingId\": \"-559910912\",\r\n        \"billingCycle\": 1,\r\n        \"billingTelephoneNumber\": null,\r\n        \"metaData\": {\r\n            \"licenses\": \"25\"\r\n        },\r\n        \"licenses\": [\r\n            {\r\n                \"applicationId\": \"EM\",\r\n                \"productId\": \"EVOLVE\",\r\n                \"featureIds\": [\r\n                    172\r\n                ],\r\n                \"settings\": {}\r\n            },\r\n            {\r\n                \"applicationId\": \"QM\",\r\n                \"productId\": \"EVOLVE\",\r\n                \"featureIds\": [\r\n                    103\r\n                ],\r\n                \"settings\": {\r\n                    \"recordingType\": \"CXone\"\r\n                }\r\n            }\r\n        ],\r\n        \"userSoftLimit\": 500,\r\n        \"brandingProfileId\": null,\r\n        \"presenceSyncEnabled\": false,\r\n        \"directorySyncEnabled\": false,\r\n        \"platformVersion\": null,\r\n        \"presenceSyncVersionDetails\": null,\r\n        \"presenceSyncSettingDetails\": null,\r\n        \"availableForDeletion\": false,\r\n        \"tenantDeletionInfo\": null,\r\n        \"errorCode\": null,\r\n        \"tenantFlowCheck\": {\r\n            \"roleSynced\": true,\r\n            \"userCreated\": true,\r\n            \"syncedWithACD\": false\r\n        },\r\n        \"markedForDeletion\": false,\r\n        \"applicationUserDetails\": [],\r\n        \"hasProcessRights\": false,\r\n        \"processingStartDate\": null,\r\n        \"systemType\": \"CXONE\",\r\n        \"partnerName\": null,\r\n        \"templateId\": null,\r\n        \"templateVersion\": 0,\r\n        \"disableImpersonateAndSupport\": false,\r\n        \"disableImpersonateAndConfigure\": false,\r\n        \"converted\": false,\r\n        \"modificationDate\": \"2021-03-30T07:17:21.373+00:00\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/tenants",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"tenants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tenantName\": \"IT_sfsdf\",\r\n    \"brandingProfileId\": null,\r\n    \"timeZone\": \"Asia/Kolkata\",\r\n    \"status\": \"ACTIVE\",\r\n    \"customerType\": \"BASIC\",\r\n    \"billingId\": \"-1\",\r\n    \"clusterId\": \"-1\",\r\n    \"source\": \"postman\",\r\n    \"defaultAdminUserRequired\": false,\r\n    \"expirationDate\": \"2022-04-01T06:47:27.734Z\",\r\n    \"tenantType\": \"TRIAL\",\r\n    \"licenses\": [\r\n        {\r\n            \"applicationId\": \"EM\",\r\n            \"productId\": \"EVOLVE\",\r\n            \"featureIds\": [\r\n                172\r\n            ],\r\n            \"settings\": {}\r\n        },\r\n        {\r\n            \"applicationId\": \"QM\",\r\n            \"productId\": \"EVOLVE\",\r\n            \"featureIds\": [\r\n                103\r\n            ],\r\n            \"settings\": {\r\n                \"recordingType\": \"CXone\"\r\n            }\r\n        }\r\n    ],\r\n    \"billingCycle\": \"1\",\r\n    \"billingTelephoneNumber\": \"12323\",\r\n    \"userSoftLimit\": 500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/tenants/v2",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"tenants",
+						"v2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invite User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailAddressesList\": [\r\n        \"ptor.222222@wfosaas.com\"\r\n    ],\r\n    \"senderEmail\": \"it_502_iu_impersonation@nice-incontact.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/user/invite",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"user",
+						"invite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activate User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ptor.1111112@wfosaas.com\",\r\n    \"password\": \"Password1\",\r\n    \"token\": \"d6fe7ea3a10f43bda6730b0b38b6fb8c\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/public/user/activate",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"public",
+						"user",
+						"activate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Roles Search",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					},
+					{
+						"key": "tenant",
+						"value": "org_t1_tenant",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filter\": {\r\n        \"internal\": [\r\n            0\r\n        ],\r\n        \"roleName\": \"Agent\"\r\n    },\r\n    \"metrices\": {\r\n        \"columns\": [\r\n            \"roleId\",\r\n            \"roleName\"\r\n        ]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{base-url}}/authorization/roles/search",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"authorization",
+						"roles",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Roles API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer-token}}",
+						"type": "text"
+					},
+					{
+						"key": "tenant",
+						"value": "{{tenantName}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filter\": {},\r\n    \"metrices\": {\r\n        \"columns\": [\r\n            \"roleName\",\r\n            \"displayName\"\r\n        ]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{base-url}}/authorization/roles/search",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"authorization",
+						"roles",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Roles and Permissions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{bearer-token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/authorization/v1/role/permissions",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"authorization",
+						"v1",
+						"role",
+						"permissions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Timeoff Balances",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{bearer-token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-url}}/timeoff-manager/balance/user/{{userHubId}}",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"timeoff-manager",
+						"balance",
+						"user",
+						"{{userHubId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

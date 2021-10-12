@@ -1,0 +1,1034 @@
+{
+	"info": {
+		"_postman_id": "f04349f4-7826-4f61-b9df-1bd64df1713d",
+		"name": "AgentMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Token",
+			"item": [
+				{
+					"name": "Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authCode",
+								"value": "{{authCode}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{token-url}}",
+							"host": [
+								"{{token-url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "refreshToken",
+								"type": "text",
+								"value": "{{refresh-token}}"
+							}
+						],
+						"url": {
+							"raw": "{{token-url}}/refresh",
+							"host": [
+								"{{token-url}}"
+							],
+							"path": [
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agent",
+			"item": [
+				{
+					"name": "Agents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agents Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"agentMuId\", pm.response.json().managementUnitId);\r",
+									"\r",
+									"pm.environment.set(\"agentSiteId\", pm.response.json().siteId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/{{userHubId}}",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"{{userHubId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agents By Pagination",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents?limit=500&offset=0&userStatus=inactive",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "500"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "userStatus",
+									"value": "inactive"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agents",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"agents\": [\n        {\n            \"wfmAgentId\": \"420\",\n            \"wfmAgentOid\": \"testWfmAgentOid\",\n            \"createdBy\": \"INTEGRATION_TEST\",\n            \"agentMus\": [\n                {\n                    \"muId\": \"599ca524-6821-4417-abda-7296c92a46fd\",\n                    \"dateRange\": [\n                        {\n                            \"endDate\": \"2021-12-31\",\n                            \"startDate\": \"2019-05-16\"\n                        }\n                    ]\n                }\n            ],\n            \"active\": \"true\",\n            \"userId\": \"b9f81c1e-8357-4dde-8e29-7e47a05c2c00\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/v1/agents/",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"v1",
+								"agents",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agents",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"agents\": [\n        {\n            \"agentId\": \"11eb596c-2ef1-06e0-bd39-0242ac110002\",\n            \"wfmAgentOid\": \"8a0010a975ea23ee017621cebd560012\",\n            \"userId\": \"11eb3459-a62a-d250-b1e3-0242ac110002\",\n            \"wfmAgentId\": 1987,\n            \"agentMus\": [\n                {\n                    \"muId\": \"11eb404d-ce12-cc50-b849-0242ac110002\",\n                    \"dateRange\": [\n                        {\n                            \"startDate\": \"2020-12-22\",\n                            \"endDate\": \"2999-12-31\"\n                        }\n                    ]\n                }\n            ],\n            \"active\": true,\n            \"createdBy\": \"CREATED_BY_AGENT_IMPORT_JOB\",\n            \"siteId\": \"11eb4051-b925-4c10-b849-0242ac110002\",\n            \"isWFXActive\": true\n        },\n        {\n            \"agentId\": \"11eb596c-2eee-bcf0-bd39-0242ac110002\",\n            \"wfmAgentOid\": \"8a0010a974432b0c01755a1c9c2b001f\",\n            \"userId\": \"11eb15bd-72b8-d490-b0a2-0242ac110002\",\n            \"wfmAgentId\": 127,\n            \"agentMus\": [\n                {\n                    \"muId\": \"11eb404d-ce12-cc50-b849-0242ac110002\",\n                    \"dateRange\": [\n                        {\n                            \"startDate\": \"2020-12-22\",\n                            \"endDate\": \"2999-12-31\"\n                        }\n                    ]\n                }\n            ],\n            \"active\": true,\n            \"createdBy\": \"CREATED_BY_AGENT_IMPORT_JOB\",\n            \"siteId\": \"11eb4051-b925-4c10-b849-0242ac110002\",\n            \"isWFXActive\": true\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/v1/agents/",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"v1",
+								"agents",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agents",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"agentId\": \"11eb07bc-14eb-40a0-8940-549c4234cd06\",\n            \"wfmAgentOid\": \"testAgentOid\",\n            \"userId\": \"b9f81c1e-8357-4dde-8e29-7e47a05c2c00\",\n            \"wfmAgentId\": 12,\n            \"agentMus\": [\n                {\n                    \"muId\": \"599ca524-6821-4417-abda-7296c92a46fd\",\n                    \"dateRange\": [\n                        {\n                            \"startDate\": \"2019-05-16\",\n                            \"endDate\": \"2019-05-18\"\n                        }\n                    ]\n                }\n            ],\n            \"active\": false,\n            \"createdBy\": \"INTEGRAION_TEST\"\n        }"
+						},
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/v1/agents/",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"v1",
+								"agents",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hard Delete Agents",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"agents\": [\n        {\n            \"wfmAgentId\": \"420\",\n            \"wfmAgentOid\": \"testWfmAgentOid\",\n            \"createdBy\": \"INTEGRATION_TEST\",\n            \"agentMus\": [\n                {\n                    \"muId\": \"599ca524-6821-4417-abda-7296c92a46fd\",\n                    \"dateRange\": [\n                        {\n                            \"endDate\": \"2021-12-31\",\n                            \"startDate\": \"2019-05-16\"\n                        }\n                    ]\n                }\n            ],\n            \"active\": \"true\",\n            \"userId\": \"b9f81c1e-8357-4dde-8e29-7e47a05c2c00\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/delete-test-agents",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"delete-test-agents"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agent Count",
+			"item": [
+				{
+					"name": "Agents Count",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents?metadata=allcount",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents"
+							],
+							"query": [
+								{
+									"key": "programId",
+									"value": "11eb0878-8f77-4c30-9e55-0242ac110002",
+									"disabled": true
+								},
+								{
+									"key": "metadata",
+									"value": "allcount"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agents Count By Programs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"programIds\": [\r\n        \"11eb49bb-bd63-d300-96a9-0242ac110002\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents?metadata=allcount",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents"
+							],
+							"query": [
+								{
+									"key": "metadata",
+									"value": "allcount"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agents Count By MUs TBM",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							},
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "{{tenantName}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"programIds\": [\r\n        \"11eb49bb-bd63-d300-96a9-0242ac110002\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents?metadata=allcount",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents"
+							],
+							"query": [
+								{
+									"key": "metadata",
+									"value": "allcount"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agent-Schedules",
+			"item": [
+				{
+					"name": "Update-Schedules",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Encoding",
+								"value": "gzip",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"periodicRequest\": true,\r\n    \"schedulesRequests\": [\r\n        {\r\n            \"wfmAgentOid\": \"2c9c0ccf77833ee10177d9557e9e00e0\",\r\n            \"schedules\": [\r\n                {\r\n                    \"scheduleDate\": \"2021-03-19\",\r\n                    \"startTime\": \"2021-03-20T05:00:00+00:00\",\r\n                    \"endTime\": \"2021-03-20T11:00:00+00:00\",\r\n                    \"note\": {\r\n                        \"noteText\": \"Hello\",\r\n                        \"canAgentView\": true\r\n                    },\r\n                    \"activitiesList\": [\r\n                        {\r\n                            \"activityOid\": \"Open Code\",\r\n                            \"startTime\": \"2021-03-20T05:00:00+00:00\",\r\n                            \"endTime\": \"2021-03-20T07:00:00+00:00\"\r\n                        },\r\n                        {\r\n                            \"activityOid\": \"No Code\",\r\n                            \"startTime\": \"2021-03-20T07:00:00+00:00\",\r\n                            \"endTime\": \"2021-03-20T07:15:00+00:00\"\r\n                        },\r\n                        {\r\n                            \"activityOid\": \"Open Code\",\r\n                            \"startTime\": \"2021-03-20T07:15:00+00:00\",\r\n                            \"endTime\": \"2021-03-20T11:00:00+00:00\"\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/schedules-update",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"schedules-update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Schedules",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Encoding",
+								"value": "gzip",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"periodicRequest\": true,\r\n    \"schedulesRequests\": [\r\n        {\r\n            \"wfmAgentOid\": \"2c9c0ccf7923049001793230ac7201b5\",\r\n            \"schedules\": [\r\n                {\r\n                    \"noCodeAsBaseCode\": true,\r\n                    \"scheduleDate\": \"2021-06-02\",\r\n                    \"startTime\": \"2021-06-02T13:00:00+00:00\",\r\n                    \"endTime\": \"2021-06-02T14:00:00+00:00\",\r\n                    \"note\": {\r\n                        \"noteText\": \"Hello\",\r\n                        \"canAgentView\": true\r\n                    },\r\n                    \"activitiesList\": [\r\n                        {\r\n                            \"activityOid\": \"No Code\",\r\n                            \"startTime\": \"2021-06-02T13:00:00+00:00\",\r\n                            \"endTime\": \"2021-06-02T14:00:00+00:00\"\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/schedules-update",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"schedules-update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Schedules",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/{{userHubId}}/schedules?startDate=2021-04-13&endDate=2021-04-14",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"{{userHubId}}",
+								"schedules"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2021-04-13"
+								},
+								{
+									"key": "endDate",
+									"value": "2021-04-14"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Schedules Purge",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/schedules-purge",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"schedules-purge"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agent-Notifications",
+			"item": [
+				{
+					"name": "Agent Notification",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/agent-detail/v1/agents/{{userHubId}}/notifications?startDate=2021-02-15T18:12:43-05:30&endDate=2021-02-20T18:12:43-05:30",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"agent-detail",
+								"v1",
+								"agents",
+								"{{userHubId}}",
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2021-02-15T18:12:43-05:30"
+								},
+								{
+									"key": "endDate",
+									"value": "2021-02-20T18:12:43-05:30"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Trade",
+			"item": [
+				{
+					"name": "Tradable Agent Intervals",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{​​​​​\n    \"searchSlots\": [\n         {​​​​​\n            \"slot\": \"2021-01-21 08:00\",\n            \"decisionCode\": \"trade_green_scheduled_slot\"\n        }​​​​​,\n        {​​​​​\n            \"slot\": \"2021-01-21 08:30\",\n            \"decisionCode\": \"trade_green_scheduled_slot\"\n        }​​​​​,\n        {​​​​​\n            \"slot\": \"2021-01-21 09:00\",\n            \"decisionCode\": \"trade_green_scheduled_slot\"\n        }​​​​​,\n        {​​​​​\n            \"slot\": \"2021-01-21 09:30\",\n            \"decisionCode\": \"trade_green_scheduled_slot\"\n        }​​​​​\n    ],\n    \"filterType\": \"allAgent\",\n    \"giveAwayTrade\": false,\n    \"filterValue\": \"\"\n}​​​​​",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/{{userHubId}}/tradable-agent-intervals",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"{{userHubId}}",
+								"tradable-agent-intervals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trade Request",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{bearer-token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/{{userHubId}}/trade?startDate=2020-06-15&endDate=2020-06-15",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"{{userHubId}}",
+								"trade"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2020-06-15"
+								},
+								{
+									"key": "endDate",
+									"value": "2020-06-15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tradable Intervals",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/{{userHubId}}/schedules/tradable-intervals?startDate=2021-09-03&endDate=2021-09-03",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"{{userHubId}}",
+								"schedules",
+								"tradable-intervals"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2021-09-03"
+								},
+								{
+									"key": "endDate",
+									"value": "2021-09-03"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tradable Intervals Validate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tradeSlots\": [\r\n        {\r\n            \"slot\": \"2021-03-17 09:30\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 10:00\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 10:30\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 11:00\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 11:30\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 12:00\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 12:30\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 13:00\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 13:30\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 14:00\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 14:30\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 15:00\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 15:30\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 16:00\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 16:30\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 17:00\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        },\r\n        {\r\n            \"slot\": \"2021-03-17 17:30\",\r\n            \"decisionCode\": \"trade_green_scheduled_slot\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/{{userHubId}}/schedules/tradable-intervals-validate",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"{{userHubId}}",
+								"schedules",
+								"tradable-intervals-validate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tradable Agents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/{{userHubId}}/tradable-agents?tradeDate=2021-07-14",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"{{userHubId}}",
+								"tradable-agents"
+							],
+							"query": [
+								{
+									"key": "tradeDate",
+									"value": "2021-07-14"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trade Submit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/{{userHubId}}/trade-request",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"{{userHubId}}",
+								"trade-request"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agent Mappings",
+			"item": [
+				{
+					"name": "Agents Skills",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/skills",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"skills"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agent-Site Mapping",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearer-token}}",
+								"type": "text"
+							},
+							{
+								"key": "tenant",
+								"value": "{{tenantName}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sites\": [\r\n        {\r\n            \"wfxAgentOid\": \"2c9c0ccf77833ee10177ed4e4b3401c2\",\r\n            \"siteId\": \"11eb7b2b-2589-a540-b086-0242ac110004\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{agent-ms}}/agents/sites",
+							"host": [
+								"{{base-url}}{{agent-ms}}"
+							],
+							"path": [
+								"agents",
+								"sites"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
